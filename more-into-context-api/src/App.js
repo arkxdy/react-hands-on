@@ -1,40 +1,35 @@
-
+import ThemeChanger from './component/ThemeChanger';
 import './App.css';
-import Card from './component/Card';
-import ThemeBtn from './component/ThemeBtn';
-import { ThemeProvider } from './context/theme';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { TestContextProvider } from './context/textContext';
+import AddTest from './component/AddTest';
+import ShowTest from './component/ShowTest';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [themeMode, setThemeMode] = useState('light')
-  const darkTheme = () => {
-    setThemeMode('dark')
+  const test = {name:'SHi'}
+  const addTest = () => {
+    test.age = 10
   }
-  const lightTheme = () => {
-    setThemeMode('light')
+  const deleteTest = () => {
+    console.log('delete')
   }
-
-  useEffect(()=> {
-    document.querySelector('html').classList.remove('dark','light')
-    document.querySelector('html').classList.add(themeMode)
-    console.log('theme', themeMode)
-  },[themeMode])
-
+  const [data, setData] = useState()
+  useEffect(() => {
+    console.log('mounted')
+    return console.log('unmounted')
+  },[])
   return (
-    <ThemeProvider value={{themeMode, darkTheme, lightTheme}}>
-    <div className="flex flex-wrap min-h-screen items-center">
-          <div className="w-full">
-              <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
-                  <ThemeBtn />
-              </div>
-
-              <div className="w-full max-w-sm mx-auto">
-                  <Card/>
-              </div>
-          </div>
-      </div>
-      </ThemeProvider>
+    <>
+      
+      <TestContextProvider value={{ test, addTest, deleteTest }}>
+        <AddTest></AddTest>
+        <ShowTest></ShowTest>
+      </TestContextProvider>
+      <input onChange={(e) => setData(e.target.value)}></input>
+      <span>{data}</span>
+      <br></br>
+      <ThemeChanger></ThemeChanger>
+    </>
   );
 }
 
