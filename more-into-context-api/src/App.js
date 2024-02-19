@@ -18,6 +18,7 @@ function App() {
   useEffect(()=> {
     document.querySelector('html').classList.remove('dark','light')
     document.querySelector('html').classList.add(themeMode)
+    console.log('theme', themeMode)
   },[themeMode])
 
   return (
@@ -29,7 +30,7 @@ function App() {
               </div>
 
               <div className="w-full max-w-sm mx-auto">
-                  <Card />
+                  <Card/>
               </div>
           </div>
       </div>

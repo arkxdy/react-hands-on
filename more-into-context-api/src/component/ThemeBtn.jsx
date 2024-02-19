@@ -1,12 +1,13 @@
 import React from 'react'
-import useTheme from '../contexts/theme';
+import useTheme from '../context/theme'
 
 function ThemeBtn() {
 
     const {themeMode, lightTheme, darkTheme} = useTheme()
-
+    //console.log(themeMode)
     const onChangeBtn = (e) => {
         const darkModeStatus = e.currentTarget.checked
+        //console.log(darkModeStatus)
         if (darkModeStatus) {
             darkTheme()
         } else {
