@@ -36,8 +36,3 @@
     transform: rotate(360deg);
   }
 }
-input:disabled {
-  background: black;
-  color: white;
-  border: 1px solid black;
-}
